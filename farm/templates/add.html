@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('add') }}" name=form method=post id=form>
+        <fieldset>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="tag" placeholder="tag" type="text"/>
+            </div>
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="breed" placeholder="breed" type="text"/>
+            </div> Date of Birth
+            <div class="form-group"> 
+                <input type="date" name="DOB">
+            </div> Date Moved In (optional)
+            <div class="form-group">
+                <input type="date" name="Date_moved_in">
+            </div>TB Test Date
+            <div class="form-group">
+                <input type="date" name="TB_test_date">
+            </div>
+            <div class="form-group">
+                <input size=60 autocomplete="off" autofocus class="form-control" name="notes" placeholder="Notes (optional)" type="text"/>
+            </div>
+            <input type="radio" name="gender" id="Male" value="Male"> Male </input><br>
+            <input type="radio" name="gender" id="Female" value="Female"> Female </input><br>
+            
+            <div class="form-group">
+                <button type="submit" name=submit id="submit">Add</button>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" name=upload value= upload id=upload onmousedown="mouseDown()">Upload File</button>
+            </div>
+            
+        </fieldset>
+    </form>
+    
+    
+    
+    <script type="text/javascript">
+   
+   "use strict";
+   
+   var click = false;
+    function mouseDown() {
+        click = true;
+        console.log("mousedown");
+    }
+    
+    
+        
+    var form= document.getElementById('form');
+    
+    form.onsubmit= function(){
+        
+        console.log('Validating form');
+        
+        var a = form.tag.value;
+        var b = form.breed.value;
+        var c = form.DOB.value;
+        var d = form.date_moved_in.value;
+        var e = form.TB_test_date.value;
+        var f = form.gender.value;
+            
+        if ( click==false) {
+            console.log('click=false');
+            if(a == "" || b == "" || c == "" || d == "" || e == "" || f == "" ){
+                    var text = document.createTextNode('blank field(s)');
+                    var child = document.getElementById('submit');
+                    child.parentNode.insertBefore(text, child);
+                    console.log('returning false');
+                    return false;
+            }
+                
+        }
+        
+    }
+    </script>
+{% endblock %}

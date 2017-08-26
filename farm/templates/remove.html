@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove
+{% endblock %}
+
+{% block main %}
+<form action="{{ url_for('remove') }}" method="post">
+    <table class="table table-striped" style="width:100%">
+      <tr>
+        <th>Tag</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Breed</th>
+        <th>Date Moved In</th>
+        <th>TB Test Date</th>
+        <th>Notes</th>
+        
+        
+       <th>
+          <div class="form-group">
+              <button class="btn btn-default" type="submit" name=multiple value=multiple>Remove Animals</button>
+          </div>
+        </th>
+      </tr>
+      
+    {% for data in info %}
+      <tr>
+        <td>{{ data.tag }}</td>
+        <td>{{ data.gender }}</td> 
+        <td>{{ data.DOB  }}</td>
+        <td>{{ data.breed }}</td>
+        <td>{{ data.date_moved_in }}</td>
+        <td>{{ data.TB_test_date }}</td>
+        <td>{{ data.notes }}</td>
+        <td>
+          <input  type="checkbox" name=tag value= {{data.tag}} ></input>
+        </td>
+      </tr>
+    {% endfor %}
+</form>
+    
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upload
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+    </form>
+    <script>
+    var multiple=false
+    
+    document.getElementById('multiple').onclick = function() {
+        multiple=true
+    }
+    
+    function validateForm() {
+
+        if (multiple==false ){
+            alert("Blank Field(s)");
+            return false;
+        }
+    }
+    </script>
+    
+{% endblock %}

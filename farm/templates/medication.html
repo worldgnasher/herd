@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Medication
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('medication') }}"  method="post">
+      <button class="btn btn-default" type="submit">Add</button>
+    </form>
+<p></p>
+    <table class="table table-striped" style="width:100%">
+      <tr>
+        <th>Tag</th>
+        <th>Drug</th>
+        <th>Date Administered</th>
+        <th>End of Meat Withdrawal</th>
+        <th>End of Milk Withdrawal</th>
+        <th>Notes</th>
+        <th>Delete</th>
+      </tr>
+    {% for infos in info %}
+      <tr>
+        <td>{{ infos.tag }}</td>
+        <td>{{ infos.drug }}</td>
+        <td>{{ infos.date_administered }}</td>
+        <td>{{ infos.meat_withdrawal }}</td>
+        <td>{{ infos.milk_withdrawal }}</td>
+        <td>{{ infos.notes }}</td>
+        <td>
+          <form action = "{{ url_for('medication') }}" method = "post">
+            <button  type="submit" name=delete value= {{infos.line_id}} >Delete</button>
+        </form>
+        </td>
+      </tr>
+    {% endfor %}
+
+
+{% endblock %}

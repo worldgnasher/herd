@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Animals
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped" style="width:100%">
+      <tr>
+        <th>Tag</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Breed</th>
+        <th>Notes</th>
+        <th> </th>
+      </tr>
+      
+    {% for data in info %}
+      <tr>
+        <td>{{ data.tag }}</td>
+        <td>{{ data.gender }}</td> 
+        <td>{{ data.DOB  }}</td>
+        <td>{{ data.breed }}</td>
+        <td>{{ data.notes }}</td>
+        <td>
+          <form action = "{{url_for('animals')}}" method = "post">
+            <button  type="submit" name=details value= {{data.tag}} >Details</button>
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+
+
+    
+{% endblock %}

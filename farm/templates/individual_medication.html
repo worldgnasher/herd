@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    add_medication
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('add_individual_med') }}" name="form" onsubmit="return validateForm()" method="post">
+        <fieldset>
+            <p>Medicine</p>
+            <select name=selected >
+                {% for data in info %}
+                <option value="{{ data.drug_id }}">{{ data.name }}</option>
+
+                {% endfor %}
+            </select>
+
+            <div class="form-group">
+                <input type="date" name="date_administered">
+            </div> End of Withdrawal Period
+
+            <div class="form-group">
+                <input size=60 autocomplete="off" autofocus class="form-control" name="notes" placeholder="Notes (optional)" type="text"/>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit" name=submit>Add</button>
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

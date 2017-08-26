@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    animal_details
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped" style="width:100%">
+      <tr>
+        <th>Tag</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Breed</th>
+        <th>Notes</th>
+      </tr>
+      {% for animal in animal %}
+      <tr>
+        <td>{{ animal.tag }}</td>
+        <td>{{ animal.gender }}</td>
+        <td>{{ animal.DOB  }}</td>
+        <td>{{ animal.breed }}</td>
+        <td>{{ animal.notes }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <form action = "{{ url_for('animal_details') }}" method = "post">
+            <button  type="submit" name=add_medication value= {{tag}} >Add medication</button>
+    </form>
+
+    <p></p>
+
+    <table class="table table-striped" style="width:100%">
+      <tr>
+        <th>Drug</th>
+        <th>Date Administered</th>
+        <th>End of Meat Withdrawal</th>
+        <th>End of Milk Withdrawal</th>
+        <th>Notes</th>
+        <th>Delete</th>
+      </tr>
+    {% for info in infos %}
+      <tr>
+        <td>{{ info.drug }}</td>
+        <td>{{ info.date_administered }}</td>
+        <td>{{ info.meat_withdrawal}}</td>
+        <td>{{ info.milk_withdrawal}}</td>
+        <td>{{ info.notes }}</td>
+        <td>
+        <form action = "{{ url_for('animal_details') }}" method = "post">
+            <button  type="submit" name=delete value= {{info.line_id}} >Delete</button>
+        </form>
+        </td>
+      </tr>
+    {% endfor %}
+
+
+{% endblock %}

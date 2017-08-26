@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    add_medication
+{% endblock %}
+
+{% block main %}
+    <form action="{{ url_for('new_medication') }}" name="form" onsubmit="return validateForm()" method="post">
+        <fieldset>
+
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="name" placeholder="name" type="text" required/>
+            </div>
+
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="meat_withdrawal" placeholder="meat withdrawal (in days)" type="number" required/>
+            </div>
+
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="milk_withdrawal" placeholder="milk withdrawal (in days)" type="number" required/>
+            </div>
+
+
+            <div class="form-group">
+                <input size=60 autocomplete="off" autofocus class="form-control" name="notes" placeholder="Notes (optional)" type="text"/>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default" type="submit" name=add>Add</button>
+            </div>
+        </fieldset>
+    </form>
+
+
+{% endblock %}

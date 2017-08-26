@@ -1,0 +1,7 @@
+SQL table:
+
+drug, withdrawal period, date administered, gender, tag number, date of end of withdrawal period, notes, condition
+
+add upload function
+
+archive old tables
